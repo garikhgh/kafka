@@ -1,35 +1,25 @@
 package org.exam.kafkaconsumer.kafka;
 
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.exam.kafkaconsumer.domain.NotificationEntity;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.exam.kafkaconsumer.domain.NotificationDto;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
-import static java.lang.Thread.sleep;
-
 @Slf4j
-@NoArgsConstructor
 @Component
+@RequiredArgsConstructor
 public class KafkaProducer {
 
-    final String productTopic = "product";
+    private static final String NOTIFICATION_TOPIC = "notification";
 
-    private KafkaTemplate<String, Serializable> kafkaTemplate;
+    private final KafkaTemplate<String, Serializable> kafkaTemplate;
 
-    @Autowired
-    public void ProductProducer(KafkaTemplate<String, Serializable> kafkaTemplate) {
-        this.kafkaTemplate = kafkaTemplate;
-    }
-
-
-    public void send(NotificationEntity message) {
-        System.out.println("----------------SENT--------------------");
-        kafkaTemplate.send(productTopic, message);
-        System.out.println("----------------Complete--------------------");
+    public void send(NotificationDto message) {
+        kafkaTemplate.send(NOTIFICATION_TOPIC, message);
+        log.info("New Notification sending is completed.");
     }
 
 }

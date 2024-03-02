@@ -2,7 +2,7 @@ package org.exam.kafkaconsumer.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.exam.kafkaconsumer.domain.NotificationEntity;
+import org.exam.kafkaconsumer.domain.NotificationDto;
 import org.exam.kafkaconsumer.kafka.KafkaProducer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,9 +20,9 @@ public class NotificationController {
     private final KafkaProducer kafkaProducer;
 
     @PostMapping("/notification")
-    public ResponseEntity<Void> createNotification(@RequestBody NotificationEntity notificationEntity) {
-        log.info("Storing new notification {}", notificationEntity);
-        kafkaProducer.send(notificationEntity);
+    public ResponseEntity<Void> createNotification(@RequestBody NotificationDto notificationDto) {
+        log.info("Storing new notification {}", notificationDto);
+        kafkaProducer.send(notificationDto);
         log.info("Notification is stored");
         return ResponseEntity.accepted().build();
     }

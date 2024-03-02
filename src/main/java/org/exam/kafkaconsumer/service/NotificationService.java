@@ -18,7 +18,7 @@ public class NotificationService {
     public void storeNotification(NotificationDto notificationDto) {
         NotificationEntity notificationEntity = mapperService.toNotificationEntity(notificationDto);
         NotificationEntity save = notificationRepository.save(notificationEntity);
-        log.info("new Notification is saved: {}", save.toString());
+        log.info("New Notification is saved: {}", save.toString());
     }
 
 }
