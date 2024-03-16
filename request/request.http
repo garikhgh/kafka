@@ -1,0 +1,16 @@
+# Create new notification
+POST http://localhost:8081/api/v1/notification
+Content-Type: application/json
+
+{
+  "description": "I am notification"
+}
+
+###
+
+# Get created notifications
+GET localhost:8081/notification
+Content-Type: application/json
+
+###
+

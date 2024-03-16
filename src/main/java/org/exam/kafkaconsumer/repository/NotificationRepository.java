@@ -2,8 +2,11 @@ package org.exam.kafkaconsumer.repository;
 
 import org.exam.kafkaconsumer.domain.NotificationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@Repository
+import static org.exam.kafkaconsumer.repository.NotificationRepository.notification;
+
+@RepositoryRestResource(collectionResourceRel = notification, path = notification)
 public interface NotificationRepository extends JpaRepository<NotificationEntity, Long> {
+    String notification = "notification";
 }
