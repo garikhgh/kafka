@@ -23,6 +23,7 @@ $ docker-compose down
 
 ## Run on Linux
 ### Send notification via Kafka and store
+#### wait for 20 seconds in order to establish kafka connection
 ```bash
 $ curl  -X POST http://localhost:8081/api/v1/notification -H "Content-Type: application/json" -d "{\"description\":\"I am notification\"}'"
 ```
