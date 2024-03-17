@@ -1,33 +1,23 @@
-In Order to Run the project just follow to the bellow steps.
+## Application Description
+#### Application gets notifications via rest api then redirects to a kafka producer.
+#### Next, the application kafka listener receives the notifications and stores then in PostgreSQL     
 
+### In Order to Run the project just follow to the bellow steps.
 ### Build the project
 
 ```bash
-
-$ ./gradlelw clean build
-
-```
-
-### On Linux
-Go to the Docker-compose file directory.
-```bash
-#!/bin/bash
-if [ -f docker-compose.yaml ]; then
-    echo "You are in a Docker environment. Doing nothing."
-else
-    # Change directory to your Docker setup directory
-    cd ./docker/
-    echo "Switched to Docker setup directory."
-fi
+$ ./gradlew clean build
 ```
 
 Startup the project, run the bellow command:
 ```bash
+$ cd ./docker/
 $ docker-compose up -d
 ```
 
 To stop the running Docker containers.
 ```bash
+$ cd ./docker/
 $ docker-compose down
 ```
 
@@ -37,14 +27,10 @@ $ docker-compose down
 $ curl  -X POST http://localhost:8081/api/v1/notification -H "Content-Type: application/json" -d "{\"description\":\"I am notification\"}'"
 ```
 
-## Cech if the notifications are created.
+## Check if the notifications are created.
 ```bash
 curl  -X GET localhost:8081/notification -H "Content-Type: application/json"
 ```
 
-
-## Run on Windows
-### Send notification via Kafka and store
-```bash
-Invoke-WebRequest -Uri 'http://localhost:8081/api/v1/notification' -Method POST -Headers @{'Content-Type'='application/json'} -Body '{"description":"I am notification"}'
-```
+## Check Notification sending, receiving and creation using 
+    /request/request.http
