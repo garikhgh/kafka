@@ -48,19 +48,15 @@ dependencies {
 jar {
     archivesBaseName = 'kafka-exam'
 }
-jib {
-	from {
-		image = 'openjdk:17.0.1-jdk-slim'
-	}
-	to {
-		image = 'garikhgh/kafka-exam'
-		auth {
-			username = "${USERNAME}"
-			password = "${PASSWORD}"
-		}
-	}
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
-}
+//jib {
+//	from {
+//		image = 'openjdk:17.0.1-jdk-slim'
+//	}
+//	to {
+//		image = 'garikhgh/kafka-exam'
+//		auth {
+//			username = "${USERNAME}"
+//			password = "${PASSWORD}"
+//		}
+//	}
+//}
