@@ -45,7 +45,9 @@ dependencies {
     testImplementation 'org.springframework.kafka:spring-kafka-test'
     testImplementation 'org.testcontainers:kafka:1.19.6'
 }
-
+jar {
+    archivesBaseName = 'kafka-exam'
+}
 jib {
 	from {
 		image = 'openjdk:17.0.1-jdk-slim'

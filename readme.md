@@ -1,5 +1,13 @@
 In Order to Run the project just follow to the bellow steps.
 
+### Build the project
+
+```bash
+
+$ ./gradlelw clean build
+
+```
+
 ### On Linux
 Go to the Docker-compose file directory.
 ```bash

@@ -72,9 +72,11 @@ services:
     depends_on:
       - zookeeper
   kafka-exam:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
     container_name: kafka-exam
     pull_policy: always
-    image: garikhgh/kafka-exam:latest
     depends_on:
       - postgres_kafka
       - kafka-server-1
